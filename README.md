@@ -1,21 +1,22 @@
-# Monaco Editor Component for Angular 2 and above.
+# Monaco Editor Component for Angular 2 and above
 
- - Angular <= 4: v3.x.x
- - Angular 5: v5.x.x
- - Angular 6: v6.x.x
- - Angular 7: v7.x.x
- - Angular 8: v8.x.x
- - Angular 9: v9.x.x
- - Angular 10: v10.x.x 
- - Angular 12: v12.x.x
- - Angular 13: not supported ( best to use 14, otherwise contact author)
- - Angular 14: v14.x.x
- - Angular 15: v15.x.x
- - Angular 16: v16.x.x
+- Angular <= 4: v3.x.x
+- Angular 5: v5.x.x
+- Angular 6: v6.x.x
+- Angular 7: v7.x.x
+- Angular 8: v8.x.x
+- Angular 9: v9.x.x
+- Angular 10: v10.x.x
+- Angular 12: v12.x.x
+- Angular 13: not supported ( best to use 14, otherwise contact author)
+- Angular 14: v14.x.x
+- Angular 15: v15.x.x
+- Angular 16: v16.x.x
 - Angular 17: 17.x.x
 - Angular 18: 18.x.x
 - Angular 19: 19.x.x
 - Angular 20: 20.x.x
+- Angular 21: 21.x.x
 
 Using this Module you can utilize the Monaco Editor as an Angular Component. Feel free to contribute, raise feature requests and make it better.
 
@@ -23,7 +24,7 @@ Supports all the options available in monaco-editor [Monaco Editor Options](http
 
 ## Demo
 
-https://ngx-monaco-editor-v2.surge.sh/
+[https://ngx-monaco-editor-v2.surge.sh/](https://ngx-monaco-editor-v2.surge.sh/)
 
 ![img.png](img.png)
 
@@ -32,18 +33,21 @@ https://ngx-monaco-editor-v2.surge.sh/
 ### Installation
 
 Install from npm repository:
+
 ```
-npm install monaco-editor ngx-monaco-editor-v2 --save
+npm install monaco-editor ngx-monaco-editor-v2-alternative
  ```
 
-Breaking change from v10, is to use monaco-editor next to ngx-monaco-editor-v2 in your package.json file.
- 
+Breaking change from v10, is to use monaco-editor next to ngx-monaco-editor-v2-alternative in your package.json file.
+
 For angular version 6 use v6.x.x
+
 ```
-npm install ngx-monaco-editor-v2@6.0.0 --save
+npm install ngx-monaco-editor-v2-alternative@6.0.0 --save
  ```
 
 Add the glob to assets in `angular.json`
+
 ```typescript
 {
   "apps": [
@@ -59,13 +63,13 @@ Add the glob to assets in `angular.json`
 }
  ```
 
-
 For Angular 6 and below, add the glob to assets in `.angular-cli.json` schema - `projects.[project-name].architect.build` (to make monaco-editor lib available to the app):
+
 ```typescript
 {
   "options":{
         {"assets": [
-          { "glob": "**/*", "input": "node_modules/ngx-monaco-editor-v2/assets/monaco", "output": "./assets/monaco/" }
+          { "glob": "**/*", "input": "node_modules/ngx-monaco-editor-v2-alternative/assets/monaco", "output": "./assets/monaco/" }
 
         ],
         ...
@@ -77,14 +81,16 @@ For Angular 6 and below, add the glob to assets in `.angular-cli.json` schema - 
  ```
 
 ### Sample
-Include MonacoEditorModule in Main Module and Feature Modules where you want to use the editor component.(eg: app.module.ts): 
+
+Include MonacoEditorModule in Main Module and Feature Modules where you want to use the editor component.(eg: app.module.ts):
+
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
+import { MonacoEditorModule } from 'ngx-monaco-editor-v2-alternative';
 
 @NgModule({
   declarations: [
@@ -103,6 +109,7 @@ export class AppModule {
 ```
 
 Create Editor options in component.(eg: app.component.ts)
+
 ```typescript
 import { Component } from '@angular/core';
 
@@ -115,15 +122,19 @@ export class AppComponent {
   code: string= 'function x() {\nconsole.log("Hello world!");\n}';
 }
 ```
+
 Include editor in html with options and ngModel bindings.(eg: app.component.html)
+
 ```html
 <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
 ```
 
 Include diff-editor in html with options.(eg: app.component.html)
+
 ```html
 <ngx-monaco-diff-editor [options]="options" [originalModel]="originalModel" [modifiedModel]="modifiedModel"></ngx-monaco-diff-editor>
 ```
+
 ```typescript
 import { Component } from '@angular/core';
 import { DiffEditorModel } from 'ngx-monaco-editor';
@@ -149,17 +160,23 @@ export class AppComponent {
 ```
 
 ### Styling
+
 To match height of container element add height: 100% and wrap in container
+
 ```html
 <div style="height: 500px">
     <ngx-monaco-editor style="height: 100%" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
 </div>
 ```
+
 Add class to editor tag. (eg. class="my-code-editor")
+
 ```html
 <ngx-monaco-editor class="my-code-editor" [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
 ```
+
 Add styling in css/scss file:
+
 ```scss
 .my-code-editor {
   .editor-container {
@@ -167,10 +184,13 @@ Add styling in css/scss file:
   }
 }
 ```
+
 Set automaticLayout option to adjust editor size dynamically. Recommended when using in modal dialog or tabs where editor is not visible initially.
 
 ### Events
-Output event (onInit) expose editor instance that can be used for performing custom operations on the editor. 
+
+Output event (onInit) expose editor instance that can be used for performing custom operations on the editor.
+
 ```html
 <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code" (onInit)="onInit($event)"></ngx-monaco-editor>
 ```
@@ -187,13 +207,15 @@ export class AppComponent {
 ```
 
 ## Configurations
+
 `forRoot()` method of MonacoEditorModule accepts config of type `NgxMonacoEditorConfig`.
+
 ```typescript
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor-v2';
+import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor-v2-alternative';
 import { AppComponent } from './app.component';
 
 const monacoConfig: NgxMonacoEditorConfig = {
@@ -221,13 +243,15 @@ export class AppModule {
 ```
 
 ### Configure JSON Defaults
+
 `onMonacoLoad` property of `NgxMonacoEditorConfig` can be used to configure JSON default.
+
 ```typescript
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor-v2';
+import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor-v2-alternative';
 import { AppComponent } from './app.component';
 
 export function onMonacoLoad() {
@@ -290,6 +314,7 @@ export class AppModule {
 ```
 
 Now pass model config of type `NgxEditorModel` to Editor Component
+
 ```typescript
 @Component({
   selector: 'app-root',
@@ -317,13 +342,15 @@ export class AppComponent {
 ```
 
 ### Configuration for Electron
+
 If you expose node's `require` in your render process, monaco will try to use its `NodeScriptLoader` and fail to load its files. To presuade it to use its `BrowserScriptLoader` instead it is necessery to set `preferScriptTags` to true.
+
 ```typescript
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor-v2';
+import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor-v2-alternative';
 import { AppComponent } from './app.component';
 
 const monacoConfig: NgxMonacoEditorConfig = {
@@ -346,7 +373,9 @@ const monacoConfig: NgxMonacoEditorConfig = {
 export class AppModule {
 }
 ```
-If for some reason you want to load monaco yourself. 
+
+If for some reason you want to load monaco yourself.
+
 ```html
 <!doctype html>
 <html>
@@ -378,13 +407,15 @@ If for some reason you want to load monaco yourself.
 
 </html>
 ```
+
 You just need to save monaco `require` function defined in `loader.js` somewhere and pass it to `monacoRequire` in configuration.
+
 ```typescript
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor-v2';
+import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor-v2-alternative';
 import { AppComponent } from './app.component';
 
 const monacoConfig: NgxMonacoEditorConfig = {
@@ -410,6 +441,7 @@ export class AppModule {
 ```
 
 ## Links
+
 [Monaco Editor](https://github.com/Microsoft/monaco-editor/)<br/>
 [Monaco Editor Options](https://microsoft.github.io/monaco-editor/docs.html)
 
