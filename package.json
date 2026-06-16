@@ -1,6 +1,6 @@
 {
   "name": "ngx-monaco-editor-v2-alternative",
-  "version": "21.0.1",
+  "version": "22.0.0",
   "description": "Monaco Code Editor For Angular",
   "keywords": [
     "angular",
@@ -18,7 +18,6 @@
     "build": "ng build --project=editor-tester --base-href=editor-tester --configuration=development",
     "build:prod": "ng build --project=editor-tester --base-href=editor-tester",
     "lint": "ng lint",
-    "e2e": "ng e2e",
     "build-and-deploy-demo": "npm run build:prod && copy dist\\editor-tester\\browser\\index.html dist\\editor-tester\\browser\\200.html && cd dist\\editor-tester\\browser && surge --domain ngx-monaco-editor-v2.surge.sh",
     "build-editor": "npm run copy:readme && ng build editor",
     "npm-publish": "npm run build-editor && npm-publish.bat",
@@ -57,8 +56,11 @@
     "@angular/cli": "21.1.2",
     "@angular/compiler-cli": "21.1.1",
     "@angular/language-service": "21.1.1",
+    "@eslint/js": "^10.0.1",
     "@types/jasmine": "^6.0.0",
     "@types/node": "^25.1.0",
+    "angular-eslint": "21.4.0",
+    "eslint": "^10.3.0",
     "jasmine-core": "^6.0.1",
     "karma": "^6.4.4",
     "karma-chrome-launcher": "^3.2.0",
@@ -67,6 +69,7 @@
     "karma-jasmine-html-reporter": "^2.2.0",
     "ng-packagr": "^21.1.0",
     "npm-run-all": "^4.1.5",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.59.2"
   }
 }

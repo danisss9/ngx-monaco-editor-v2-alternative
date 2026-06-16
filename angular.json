@@ -109,6 +109,15 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/editor-tester/**/*.ts",
+              "projects/editor-tester/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -139,6 +148,15 @@
             "main": "projects/editor/src/test.ts",
             "tsConfig": "projects/editor/tsconfig.spec.json",
             "karmaConfig": "projects/editor/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/editor/**/*.ts",
+              "projects/editor/**/*.html"
+            ]
           }
         }
       }
