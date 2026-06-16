@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DiffEditorModel, NgxEditorModel } from '../../../editor/src/lib/types';
-import { DiffEditorComponent, EditorComponent } from 'projects/editor/src/public-api';
+import { DiffEditorComponent, EditorComponent } from '../../../editor/src/public-api';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 
